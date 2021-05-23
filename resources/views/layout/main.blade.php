@@ -14,9 +14,36 @@
         <img src="/img/logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
         App Help Desk
       </a>
+  @auth
+    <ul class="navbar-nav">
+    <li class="nav-item">
+    <form action="/logout" method="POST">
+    @csrf
+    <a href="/logout"
+    class="lav-link"
+    onclick="event.preventDefault();
+    this.closest('form').submit();">
+    Sair
+    </a>
+    </form>
+    </li>
+    </ul>
+  @endauth  
     </nav>
 
-@yield('content')
+    <main>
+    <div class="container-fluid">
+    <div class="row">
+    @if(session('msg'))
+    <p class="msg">{{session('msg')}}</p>
+    @endif
+    @yield('content')
+    </div>
+    </div>
+ 
+    </main>
+
+
 
 
     </body>

@@ -15,7 +15,12 @@ use App\Http\controllers\routeController;
 |
 */
 
-Route::get('/', [routeController::class, 'index']);
+Route::get('/home', [routeController::class, 'home']);
 Route::get('/abrir_chamado', [routeController::class, 'abrir_chamado']);
 Route::get('/consultar_chamado', [routeController::class, 'consultar_chamado']);
-Route::get('/home', [routeController::class, 'home']);
+
+Route::POST('/new_chamado', [routeController::class, 'store']);
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/', function () {
+    return view('dashboard');
+})->name('dashboard');

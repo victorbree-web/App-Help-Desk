@@ -13,29 +13,38 @@
               Consulta de chamado
             </div>
             
+            @foreach($chamados as $chamado)
             <div class="card-body">
               
               <div class="card mb-3 bg-light">
                 <div class="card-body">
-                  <h5 class="card-title">Título do chamado...</h5>
-                  <h6 class="card-subtitle mb-2 text-muted">Categoria</h6>
-                  <p class="card-text">Descrição do chamado...</p>
+                  <h5 class="card-title">{{$chamado->titulo}}</h5>
+                  <h6 class="card-subtitle mb-2 text-muted">
+                  @if($chamado->categoria == 1)
+                    Criação de Usuário
+                  @elseif($chamado->categoria == 2)
+                    Impressora
+                  @elseif($chamado->categoria == 3) 
+                    Hardware
+                  @elseif($chamado->categoria == 4)
+                    Software
+                  @elseif($chamado->categoria == 5)
+                    Rede    
+                  @endif
+                  </h6>
+                  <p class="card-text">{{$chamado->descricao}}</p>
 
                 </div>
               </div>
-
-              <div class="card mb-3 bg-light">
-                <div class="card-body">
-                  <h5 class="card-title">Título do chamado...</h5>
-                  <h6 class="card-subtitle mb-2 text-muted">Categoria</h6>
-                  <p class="card-text">Descrição do chamado...</p>
-
-                </div>
               </div>
+              @endforeach
+
+
+
 
               <div class="row mt-5">
                 <div class="col-6">
-                  <button class="btn btn-lg btn-warning btn-block" type="submit">Voltar</button>
+                  <a class="btn btn-lg btn-warning btn-block" href="/">Voltar</a>
                 </div>
               </div>
             </div>
